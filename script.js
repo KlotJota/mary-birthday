@@ -103,6 +103,7 @@ musicToggle.addEventListener('click',()=>{
 });
 giftTrigger.addEventListener('click',()=>{
   giftTrigger.disabled=true;
+  giftTrigger.blur();
   void startMusic();
   giftIntro.classList.add('opening');
   giftInstruction.textContent='abrindo sua surpresa...';

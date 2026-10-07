@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#211b3d"><title>Feliz aniversário, meu amor</title>
+  <script>if(screen.width<=500&&innerWidth>screen.width*1.5)document.documentElement.classList.add('phone-desktop-mode')</script>
   <link rel="stylesheet" href="style.css">
   <style>
     /* Figuras CSS temporárias; o sprite original continua preservado em assets/. */
@@ -52,7 +53,9 @@
     .gift-intro:before{content:'';position:absolute;inset:0;opacity:.8;background-image:radial-gradient(#e2f2ff 1px,transparent 1.5px),radial-gradient(#b9d9f2 1px,transparent 1.5px);background-size:53px 57px,79px 73px;background-position:9px 14px,29px 7px;pointer-events:none}
     .gift-title,.gift-instruction{position:relative;z-index:1;color:#ffe1c5;font-size:clamp(9px,2.3vw,12px);line-height:1.8}
     .gift-title{margin:0 0 12px}.gift-instruction{margin:8px 0 0;color:#ffd6aa;animation:blink 1.3s steps(2) infinite}
-    .gift-trigger{position:relative;z-index:1;width:180px;height:180px;border:0;background:transparent;cursor:pointer;image-rendering:pixelated;touch-action:manipulation}
+    .gift-trigger{position:relative;z-index:1;width:180px;height:180px;border:0;background:transparent;cursor:pointer;image-rendering:pixelated;touch-action:manipulation;-webkit-tap-highlight-color:transparent;outline:none;appearance:none}
+    .gift-trigger:focus{outline:none;box-shadow:none}
+    .gift-trigger:focus-visible{outline:2px solid #ffd88c;outline-offset:4px}
     .gift-box{position:absolute;inset:0;display:block;animation:gift-idle 1.8s steps(2) infinite}
     .gift-body{position:absolute;left:36px;top:112px;width:108px;height:48px;background:#e87595;box-shadow:0 7px #9f496c,7px 7px #9f496c;z-index:1}
     .gift-cat{position:absolute;left:61px;top:63px;width:58px;height:55px;display:block;z-index:3}
@@ -83,15 +86,16 @@
     .stage{height:80svh}
     .characters{bottom:21%}
     .floor{bottom:7.5%;left:0;right:0;border:0;box-shadow:none;height:0}
-    .moon{top:30%;left:50%;right:auto;width:clamp(200px,54vw,300px);transform:translateX(-50%)}
+    .moon{top:24%;left:50%;right:auto;width:clamp(150px,28vw,220px);transform:translateX(-50%)}
     .greeting{justify-content:flex-start;padding:0 14px}
     .heart-row{position:absolute;top:7%;left:0;right:0}
     .eyebrow{position:absolute;top:12%;left:12px;right:12px;margin:0}
-    .greeting h1{position:absolute;top:17%;left:12px;right:12px;margin:0;font-size:clamp(17px,5.2vw,30px);line-height:1.65}
-    .closing{position:absolute;top:calc(30% + clamp(200px,54vw,300px) + 8px);left:50%;right:auto;width:min(90%,420px);margin:0;transform:translateX(-50%);font-size:clamp(6.5px,1.8vw,9px);line-height:1.7;text-align:center;white-space:normal;overflow-wrap:normal}
+    .greeting h1{position:absolute;top:15%;left:12px;right:12px;margin:0;font-size:clamp(17px,5.2vw,30px);line-height:1.65}
+    .closing{position:absolute;top:calc(24% + clamp(150px,28vw,220px) + 6px);left:50%;right:auto;width:min(90%,420px);margin:0;transform:translateX(-50%);font-size:clamp(6.5px,1.8vw,9px);line-height:1.7;text-align:center;white-space:normal;overflow-wrap:normal}
     .scene.done .stage{opacity:1!important}
     .scene.done .intro{opacity:0;animation:none}
-    @media(max-height:700px){.moon{top:28%;width:clamp(160px,48vw,210px)}.greeting h1{top:16%}.closing{top:calc(28% + clamp(160px,48vw,210px) + 6px)}}
+    @media(max-height:700px){.moon{top:22%;width:clamp(140px,28vw,200px)}.greeting h1{top:13%}.closing{top:calc(22% + clamp(140px,28vw,200px) + 6px)}}
+    @media(min-width:600px){.phone-desktop-mode .moon{top:24%;width:42vw;max-width:none}.phone-desktop-mode .heart-row{font-size:40px}.phone-desktop-mode .eyebrow{font-size:22px}.phone-desktop-mode .greeting h1{font-size:50px}.phone-desktop-mode .closing{top:calc(24% + 42vw + 8px);width:90vw;max-width:none;font-size:18px;line-height:1.7}.phone-desktop-mode .intro{font-size:32px}.phone-desktop-mode .person{scale:2.9;transform-origin:center bottom}.phone-desktop-mode .scene.moving .person-a{left:calc(50% - 145px)}.phone-desktop-mode .scene.moving .person-b{right:calc(50% - 145px)}.phone-desktop-mode .music,.phone-desktop-mode .replay{scale:2.6;transform-origin:bottom left}.phone-desktop-mode .replay{transform-origin:bottom right}.phone-desktop-mode .speech-bubble{scale:2.5;transform-origin:center bottom;bottom:280px}.phone-desktop-mode .gift-title,.phone-desktop-mode .gift-instruction{font-size:32px}.phone-desktop-mode .gift-trigger{width:500px;height:500px;flex:none}.phone-desktop-mode .gift-box{inset:auto;left:50%;top:50%;width:180px;height:180px;transform:translate(-50%,-50%) scale(3.2);transform-origin:center}}
   </style>
 </head>
 <body>
