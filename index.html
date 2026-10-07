@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#211b3d"><title>Feliz aniversário, meu amor</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Figuras CSS temporárias; o sprite original continua preservado em assets/. */
+    .person{transition-duration:6s!important;image-rendering:pixelated;background-image:none;width:48px;height:78px;scale:1.18;filter:drop-shadow(2px 3px 0 #17112688)}
+    .person-a{--shirt:#4d8588;--hair:#25232c;--pants:#343b59;--shoes:#573a36}
+    .person-b{--shirt:#d76587;--hair:#4a2c2a;--pants:#6f3851;--shoes:#593b38}
+    .person i{display:block;image-rendering:pixelated}
+    .party-hat{position:absolute;z-index:6;left:10px;top:-15px;width:28px;height:29px;display:block!important;filter:drop-shadow(2px 2px #38243c)}
+    .party-hat:before{content:'';position:absolute;left:3px;top:0;width:22px;height:23px;background:linear-gradient(to bottom,#e85c86 0 62%,#ffd88c 63% 80%,#d94875 81%);clip-path:polygon(50% 0,100% 100%,0 100%)}
+    .party-hat:after{content:'';position:absolute;left:0;top:19px;width:28px;height:5px;background:#ffd88c;box-shadow:0 3px #b95779}
+    .party-hat i{position:absolute;display:block!important;left:10px;top:-5px;width:7px;height:7px;background:#ffe8a6;box-shadow:2px 2px #c98b62}
+    .scene.moving .person{animation:walk-step .42s steps(2,end) infinite}
+    .scene.resetting .person{transition:none!important;animation:none!important}
+    .scene.moving .person-b{animation-delay:.21s}
+    .scene.approaching .person-a{left:calc(50% - 62px)}
+    .scene.approaching .person-b{right:calc(50% - 62px)}
+    .speech-bubble{position:absolute;left:calc(50% - 118px);bottom:98px;width:160px;padding:8px 5px;background:#fff0d8;border:2px solid #e982a1;box-shadow:3px 3px #9d466d;color:#392a35;font-size:7px;line-height:1.8;text-align:center;z-index:4;opacity:0;transform:translateY(6px) scale(.92);transition:opacity .22s,transform .22s;pointer-events:none}
+    .speech-bubble:after{content:'';position:absolute;left:50%;bottom:-7px;width:7px;height:7px;background:#fff0d8;clip-path:polygon(0 0,100% 0,0 100%)}
+    .scene.speaking .speech-bubble{opacity:1;transform:none}
+    @keyframes walk-step{0%,100%{translate:0 0}50%{translate:1px -3px}}
+    .person-b{transform:none}
+    .person-b .arm{left:4px}
+    .person-b .legs{left:15px;top:63px}
+    .scene.holding .person-a,.scene.holding .person-b{transform:none;transition:transform .45s steps(3)}
+    .person .hair{top:4px;left:10px;width:28px;height:16px;background:var(--hair);box-shadow:-4px 5px var(--hair),4px 5px var(--hair),0 10px var(--hair);z-index:4}
+    .person-a .hair{box-shadow:-4px 5px #25232c,4px 5px #25232c,0 10px #25232c,8px 2px #34313b}
+    .person-b .hair{box-shadow:-4px 5px #4a2c2a,4px 5px #4a2c2a,0 10px #4a2c2a,8px 2px #69403a,16px 8px #69403a}
+    .person .face{top:13px;left:14px;width:20px;height:20px;background:#f4bd91;box-shadow:-4px 4px #f4bd91,4px 4px #f4bd91;z-index:5}
+    .person .face:after{content:'';position:absolute;top:6px;left:4px;width:3px;height:3px;background:#392a35;box-shadow:8px 0 #392a35}
+    .person .face:before{content:'';position:absolute;top:13px;left:6px;width:2px;height:2px;background:#a64c5b;box-shadow:2px 2px #a64c5b,4px 0 #a64c5b}
+    .person .shirt{top:37px;left:10px;width:28px;height:22px;background:var(--shirt);box-shadow:-4px 3px var(--shirt),4px 3px var(--shirt);z-index:2}
+    .person .shirt:before{content:'';position:absolute;left:10px;top:0;width:8px;height:4px;background:#ffe1c5}
+    .person-b .shirt{height:15px;box-shadow:-4px 3px var(--shirt),4px 3px var(--shirt)}
+    .person-b .shirt:after{content:'';position:absolute;left:-4px;top:14px;width:36px;height:15px;background:#d76587;clip-path:polygon(12% 0,88% 0,100% 100%,0 100%)}
+    .person .arm{top:40px;left:4px;width:6px;height:17px;background:#f4bd91;box-shadow:34px 0 #f4bd91;z-index:3}
+    .person .legs{top:58px;left:15px;width:7px;height:13px;background:var(--pants);box-shadow:12px 0 var(--pants);z-index:1}
+    .person .legs:after{content:'';position:absolute;left:-2px;top:10px;width:10px;height:4px;background:var(--shoes);box-shadow:12px 0 var(--shoes)}
+    .together{width:88px;height:61px;margin:18px auto 8px;border:0;position:relative}
+    .together .mini-boy,.together .mini-girl{position:absolute;bottom:3px;width:17px;height:23px;background:#d98728;box-shadow:0 8px #4b3155,0 12px #33243d;image-rendering:pixelated}
+    .together .mini-boy{left:19px}.together .mini-girl{right:19px;background:#2869bd;box-shadow:0 8px #294574,0 12px #33243d}
+    .together .mini-boy:before,.together .mini-girl:before{content:'';position:absolute;left:1px;top:-17px;width:15px;height:15px;background:#f4bd91;box-shadow:0 -5px #67402e,4px -8px #67402e}
+    .together .mini-girl:before{box-shadow:0 -5px #b94166,5px -8px #b94166,10px -3px #d45c74}
+    .together .mini-hands{display:none}
+    .together b{position:absolute;left:39px;top:0;color:#e85c86;font-size:13px}
+    .scene.kissing .kiss{animation-duration:1.1s!important}
+    .gift-intro{position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(180deg,#07152c 0%,#0b2141 52%,#183052 74%,#29364a 100%);text-align:center;transition:opacity .65s,visibility .65s}
+    .gift-intro:before{content:'';position:absolute;inset:0;opacity:.8;background-image:radial-gradient(#e2f2ff 1px,transparent 1.5px),radial-gradient(#b9d9f2 1px,transparent 1.5px);background-size:53px 57px,79px 73px;background-position:9px 14px,29px 7px;pointer-events:none}
+    .gift-title,.gift-instruction{position:relative;z-index:1;color:#ffe1c5;font-size:clamp(9px,2.3vw,12px);line-height:1.8}
+    .gift-title{margin:0 0 12px}.gift-instruction{margin:8px 0 0;color:#ffd6aa;animation:blink 1.3s steps(2) infinite}
+    .gift-trigger{position:relative;z-index:1;width:180px;height:180px;border:0;background:transparent;cursor:pointer;image-rendering:pixelated;touch-action:manipulation}
+    .gift-box{position:absolute;inset:0;display:block;animation:gift-idle 1.8s steps(2) infinite}
+    .gift-body{position:absolute;left:36px;top:112px;width:108px;height:48px;background:#e87595;box-shadow:0 7px #9f496c,7px 7px #9f496c;z-index:1}
+    .gift-cat{position:absolute;left:61px;top:63px;width:58px;height:55px;display:block;z-index:3}
+    .gift-cat i{position:absolute;display:block}
+    .gift-cat .cat-ear{top:0;width:16px;height:17px;background:#383342}
+    .gift-cat .cat-ear.left{left:8px;clip-path:polygon(0 100%,16% 0,100% 100%)}
+    .gift-cat .cat-ear.right{right:8px;clip-path:polygon(0 100%,84% 0,100% 100%)}
+    .gift-cat .cat-face{left:10px;top:10px;width:38px;height:30px;background:#383342;box-shadow:0 4px #292737}
+    .gift-cat .cat-eye{top:21px;width:4px;height:5px;background:#ffe39a;box-shadow:1px 1px #fff3c6}
+    .gift-cat .cat-eye.left{left:20px}.gift-cat .cat-eye.right{right:20px}
+    .gift-cat .cat-nose{left:28px;top:29px;width:4px;height:3px;background:#e98c9b}
+    .gift-paws{position:absolute;left:71px;top:105px;width:38px;height:12px;z-index:3}
+    .gift-paws i{position:absolute;top:0;width:10px;height:8px;background:#383342;box-shadow:0 3px #292737}
+    .gift-paws .left{left:0}.gift-paws .right{right:0}
+    .gift-lid{position:absolute;left:29px;top:65px;width:122px;height:17px;background:#ffb2c4;box-shadow:0 6px #b95779,7px 6px #b95779;transform-origin:100% 100%;transform:translate(-4px,-22px) rotate(-6deg);transition:transform .55s steps(5);z-index:5}
+    .gift-ribbon{position:absolute;left:84px;top:112px;width:13px;height:48px;background:#ffd88c;box-shadow:4px 0 #e7ac61;z-index:2}
+    .gift-bow{position:absolute;left:72px;top:48px;width:23px;height:17px;border:5px solid #ffd88c;box-shadow:14px 0 #ffd88c;transform:rotate(-5deg);transition:transform .45s steps(3);z-index:6}
+    .gift-burst{position:absolute;left:0;right:0;top:35px;color:#ffb2c4;font-size:17px;letter-spacing:5px;opacity:0;transform:translateY(22px) scale(.4);transition:opacity .3s,transform .65s steps(5);text-shadow:3px 3px #9d466d}
+    .gift-intro.opening .gift-lid{transform:translate(14px,-30px) rotate(24deg)}
+    .gift-intro.opening .gift-bow{transform:translate(20px,-37px) rotate(30deg)}
+    .gift-intro.opening .gift-burst{opacity:1;transform:translateY(-10px) scale(1.15)}
+    .gift-intro.dismissed{opacity:0;visibility:hidden;pointer-events:none}
+    @keyframes gift-idle{0%,100%{translate:0 0}50%{translate:0 -5px}}
+    .scene{background:linear-gradient(180deg,#07152c 0%,#0b2141 52%,#183052 74%,#29364a 100%)}
+    .scene:after{inset:auto 0 0;height:37%;z-index:1;opacity:1;background:linear-gradient(to bottom,#78a94d 0 8px,#4d7545 8px 13px,#49342c 13px 100%)}
+    .stars{opacity:.8;background-image:radial-gradient(#e2f2ff 1px,transparent 1.5px),radial-gradient(#b9d9f2 1px,transparent 1.5px);background-size:53px 57px,79px 73px;background-position:9px 14px,29px 7px}
+    .moon{position:absolute;z-index:1;top:8%;right:9%;width:clamp(150px,28vw,270px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 29% 27%,rgba(154,177,172,.45) 0 7%,transparent 7.5%),radial-gradient(circle at 68% 36%,rgba(154,177,172,.32) 0 10%,transparent 10.5%),radial-gradient(circle at 42% 68%,rgba(154,177,172,.28) 0 12%,transparent 12.5%),radial-gradient(circle at 72% 72%,rgba(154,177,172,.3) 0 5%,transparent 5.5%),#e5edcf;box-shadow:0 0 32px 8px rgba(218,235,215,.18),0 0 88px 24px rgba(151,194,219,.12)}
+    .stage{height:80svh}
+    .characters{bottom:21%}
+    .floor{bottom:7.5%;left:0;right:0;border:0;box-shadow:none;height:0}
+    .moon{top:30%;left:50%;right:auto;width:clamp(200px,54vw,300px);transform:translateX(-50%)}
+    .greeting{justify-content:flex-start;padding:0 14px}
+    .heart-row{position:absolute;top:7%;left:0;right:0}
+    .eyebrow{position:absolute;top:12%;left:12px;right:12px;margin:0}
+    .greeting h1{position:absolute;top:17%;left:12px;right:12px;margin:0;font-size:clamp(17px,5.2vw,30px);line-height:1.65}
+    .closing{position:absolute;top:calc(30% + clamp(200px,54vw,300px) + 8px);left:50%;right:auto;width:min(90%,420px);margin:0;transform:translateX(-50%);font-size:clamp(6.5px,1.8vw,9px);line-height:1.7;text-align:center;white-space:normal;overflow-wrap:normal}
+    .scene.done .stage{opacity:1!important}
+    .scene.done .intro{opacity:0;animation:none}
+    @media(max-height:700px){.moon{top:28%;width:clamp(160px,48vw,210px)}.greeting h1{top:16%}.closing{top:calc(28% + clamp(160px,48vw,210px) + 6px)}}
+  </style>
+</head>
+<body>
+<main class="scene" aria-label="Surpresa de aniversário">
+  <div class="moon" aria-hidden="true"></div>
+  <section class="gift-intro" id="gift-intro" aria-label="Abrir o presente">
+    <p class="gift-title">uma surpresa te espera</p>
+    <button class="gift-trigger" id="gift-trigger" type="button" aria-label="Abrir o presente e começar a surpresa">
+      <span class="gift-box" aria-hidden="true"><i class="gift-body"></i><span class="gift-cat"><i class="cat-ear left"></i><i class="cat-ear right"></i><i class="cat-face"></i><i class="cat-eye left"></i><i class="cat-eye right"></i><i class="cat-nose"></i></span><i class="gift-lid"></i><span class="gift-paws"><i class="left"></i><i class="right"></i></span><i class="gift-ribbon"></i><i class="gift-bow"></i></span>
+      <span class="gift-burst" aria-hidden="true">♥　✦　♥</span>
+    </button>
+    <p class="gift-instruction">toque para abrir seu presente</p>
+  </section>
+  <div class="stars" aria-hidden="true"></div>
+  <section class="stage" aria-hidden="true">
+    <p class="intro">uma surpresa para você...</p>
+    <div class="characters">
+      <div class="person person-a"><i class="hair"></i><i class="face"></i><i class="shirt"></i><i class="arm"></i><i class="legs"></i></div>
+      <div class="person person-b"><i class="hair"></i><i class="face"></i><i class="shirt"></i><i class="arm"></i><i class="legs"></i><span class="party-hat"><i></i></span></div>
+      <span class="speech-bubble" aria-hidden="true">Feliz aniversário<br>amor!</span>
+      <span class="kiss">♥</span>
+    </div><div class="floor"></div>
+  </section>
+  <section class="greeting" id="greeting" aria-live="polite">
+    <div class="heart-row" aria-hidden="true">♥　♥　♥</div>
+    <p class="eyebrow">para a pessoa mais especial</p>
+    <h1>Feliz aniversário,<br><span>meu amor!</span></h1>
+    <p class="closing">Que venham muitos outros ao seu lado 💗</p>
+  </section>
+  <button class="music" id="music-toggle" type="button" aria-label="Silenciar música">♫ silenciar</button>
+  <button class="replay" id="replay" type="button">↻ assistir de novo</button>
+</main><script src="script.js"></script>
+</body></html>
